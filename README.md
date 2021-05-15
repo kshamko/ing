@@ -36,6 +36,6 @@ or in a browser
 Also an additionl port is exposed for debug/healthcheck/swagger-ui purposes
 
 1. Metrics: http://localhost:6060/metrics
-2. Heaaltcheck: http://localhost:6060/healthz
+2. Healthcheck: http://localhost:6060/healthz
 3. Swagger-UI: http://localhost:6060/swagger-ui
-
+4. See **internal/debug/debug.go** for more details
