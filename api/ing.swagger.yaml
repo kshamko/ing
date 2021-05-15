@@ -1,0 +1,83 @@
+swagger: '2.0'
+info:
+  title: "Swagger Ing Routes"
+  version: 0.0.1
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /routes:
+    get:
+      operationId: Routes
+      responses:
+        '200':
+          description: 'A successful response.'
+          schema:
+            $ref: '#/definitions/Routes'
+        '500':
+          description: 'Error response'
+          schema: 
+            $ref: '#/definitions/ApiInvalidResponse'
+              
+      parameters:
+        - name: src
+          in: query
+          required: true
+          collectionFormat: csv
+          type: array
+          items:
+            type: string
+            pattern: '^[-+]?[0-9]+\.[0-9]+$'
+          minItems: 2
+          maxItems: 2
+
+        - name: dst
+          in: query
+          required: true
+          collectionFormat: multi
+          type: array
+          items:
+            collectionFormat: csv
+            type: array
+            items:
+              type: string
+              pattern: '^[-+]?[0-9]+\.[0-9]+$'
+            minItems: 2
+            maxItems: 2                 
+      tags:
+        - Routes
+
+definitions:
+
+  Routes:
+    type: object
+    properties:
+      source:
+        type: string
+      routes:
+        type: array
+        items:  
+          type: object
+          allOf: 
+          - $ref: '#/definitions/Route' 
+  
+  Route:
+    type: object
+    properties:
+      destination:
+        type: string
+      duration:
+        type: number
+        format: float
+      distance:
+        type: number
+        format: float
+
+  ApiInvalidResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
