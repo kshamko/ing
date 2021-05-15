@@ -12,3 +12,6 @@ lint:
 
 test:
 	go test ./...
+
+docker:
+	docker build .	

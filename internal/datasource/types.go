@@ -26,7 +26,7 @@ type Route struct {
 	Distance    float32 `json:"distance"`
 }
 
-// RouteErrResponse represent an error respone from OSRM.
+// RouteErrResponse represent an error response from OSRM.
 type RouteErrResponse struct {
 	Message string `json:"message"`
 	Code    string `json:"code"`

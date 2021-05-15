@@ -44,7 +44,7 @@ func (s *Service) Serve(ctx context.Context, l string) error {
 	fs := http.FileServer(http.Dir("assets/swagger-ui"))
 	r.Handle("/swagger-ui/", http.StripPrefix("/swagger-ui/", fs))
 	r.HandleFunc("/swagger.json", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, string(restapi.FlatSwaggerJSON))
+		fmt.Fprint(w, string(restapi.FlatSwaggerJSON))
 	})
 
 	ms := http.Server{
