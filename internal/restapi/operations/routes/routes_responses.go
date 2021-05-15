@@ -57,6 +57,50 @@ func (o *RoutesOK) WriteResponse(rw http.ResponseWriter, producer runtime.Produc
 	}
 }
 
+// RoutesUnprocessableEntityCode is the HTTP code returned for type RoutesUnprocessableEntity
+const RoutesUnprocessableEntityCode int = 422
+
+/*RoutesUnprocessableEntity Unprocessable entity
+
+swagger:response routesUnprocessableEntity
+*/
+type RoutesUnprocessableEntity struct {
+
+	/*
+	  In: Body
+	*/
+	Payload *models.APIInvalidResponse `json:"body,omitempty"`
+}
+
+// NewRoutesUnprocessableEntity creates RoutesUnprocessableEntity with default headers values
+func NewRoutesUnprocessableEntity() *RoutesUnprocessableEntity {
+
+	return &RoutesUnprocessableEntity{}
+}
+
+// WithPayload adds the payload to the routes unprocessable entity response
+func (o *RoutesUnprocessableEntity) WithPayload(payload *models.APIInvalidResponse) *RoutesUnprocessableEntity {
+	o.Payload = payload
+	return o
+}
+
+// SetPayload sets the payload to the routes unprocessable entity response
+func (o *RoutesUnprocessableEntity) SetPayload(payload *models.APIInvalidResponse) {
+	o.Payload = payload
+}
+
+// WriteResponse to the client
+func (o *RoutesUnprocessableEntity) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(422)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
 // RoutesInternalServerErrorCode is the HTTP code returned for type RoutesInternalServerError
 const RoutesInternalServerErrorCode int = 500
 

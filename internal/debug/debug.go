@@ -3,12 +3,14 @@ package debug
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/pprof"
 	"time"
 
 	health "github.com/InVisionApp/go-health"
 	"github.com/InVisionApp/go-health/handlers"
+	"github.com/kshamko/ing/internal/restapi"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
@@ -38,6 +40,12 @@ func (s *Service) Serve(ctx context.Context, l string) error {
 	r.Handle("/debug/pprof/symbol", http.HandlerFunc(pprof.Symbol))
 	r.Handle("/debug/pprof/trace", http.HandlerFunc(pprof.Trace))
 	r.HandleFunc("/healthz", handlers.NewJSONHandlerFunc(s.healthd, nil))
+
+	fs := http.FileServer(http.Dir("assets/swagger-ui"))
+	r.Handle("/swagger-ui/", http.StripPrefix("/swagger-ui/", fs))
+	r.HandleFunc("/swagger.json", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, string(restapi.FlatSwaggerJSON))
+	})
 
 	ms := http.Server{
 		Addr:         l,

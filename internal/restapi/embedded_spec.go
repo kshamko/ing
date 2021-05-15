@@ -46,6 +46,7 @@ func init() {
               "type": "string"
             },
             "collectionFormat": "csv",
+            "description": "representation of geo coordinate in format: src=lat,lon",
             "name": "src",
             "in": "query",
             "required": true
@@ -63,6 +64,7 @@ func init() {
               "collectionFormat": "csv"
             },
             "collectionFormat": "multi",
+            "description": "representation of geo coordinateS in format: dst=lat,lon\u0026dst=lat,lon",
             "name": "dst",
             "in": "query",
             "required": true
@@ -73,6 +75,12 @@ func init() {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/Routes"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity",
+            "schema": {
+              "$ref": "#/definitions/ApiInvalidResponse"
             }
           },
           "500": {
@@ -163,6 +171,7 @@ func init() {
               "type": "string"
             },
             "collectionFormat": "csv",
+            "description": "representation of geo coordinate in format: src=lat,lon",
             "name": "src",
             "in": "query",
             "required": true
@@ -180,6 +189,7 @@ func init() {
               "collectionFormat": "csv"
             },
             "collectionFormat": "multi",
+            "description": "representation of geo coordinateS in format: dst=lat,lon\u0026dst=lat,lon",
             "name": "dst",
             "in": "query",
             "required": true
@@ -190,6 +200,12 @@ func init() {
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/Routes"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity",
+            "schema": {
+              "$ref": "#/definitions/ApiInvalidResponse"
             }
           },
           "500": {

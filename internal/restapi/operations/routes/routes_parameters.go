@@ -34,13 +34,13 @@ type RoutesParams struct {
 	// HTTP Request Object
 	HTTPRequest *http.Request `json:"-"`
 
-	/*
+	/*representation of geo coordinateS in format: dst=lat,lon&dst=lat,lon
 	  Required: true
 	  In: query
 	  Collection Format: multi
 	*/
 	Dst [][]string
-	/*
+	/*representation of geo coordinate in format: src=lat,lon
 	  Required: true
 	  Max Items: 2
 	  Min Items: 2

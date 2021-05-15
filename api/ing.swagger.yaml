@@ -19,11 +19,16 @@ paths:
           description: 'Error response'
           schema: 
             $ref: '#/definitions/ApiInvalidResponse'
+        '422':
+          description: 'Unprocessable entity'
+          schema: 
+            $ref: '#/definitions/ApiInvalidResponse'            
               
       parameters:
         - name: src
           in: query
           required: true
+          description: 'representation of geo coordinate in format: src=lat,lon'
           collectionFormat: csv
           type: array
           items:
@@ -35,12 +40,13 @@ paths:
         - name: dst
           in: query
           required: true
+          description: 'representation of geo coordinateS in format: dst=lat,lon&dst=lat,lon'
           collectionFormat: multi
           type: array
           items:
             collectionFormat: csv
             type: array
-            items:
+            items:              
               type: string
               pattern: '^[-+]?[0-9]+\.[0-9]+$'
             minItems: 2
