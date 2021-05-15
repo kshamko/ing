@@ -1,6 +1,6 @@
 # Description
 
-Implementation of test task: implement REST API 
+Implementation of test task
 
 ## Approach
 
@@ -16,7 +16,7 @@ $ make swagger
 
 ## Build and Run
 
-To run the app it would be nice to have **docker-compose** install
+To run the app it would be nice to have **docker-compose** installed
 
 ```bash
 $ git clone git@github.com:kshamko/ing.git
