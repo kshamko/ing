@@ -16,7 +16,7 @@ $ make swagger
 
 ## Build and Run
 
-To run the app it would be nice to have **docer-compose** install
+To run the app it would be nice to have **docker-compose** install
 
 ```bash
 $ git clone git@github.com:kshamko/ing.git
@@ -33,7 +33,7 @@ or in a browser
 
 ## Service Endpoints
 
-Also an additionl port will be exposed for debug/healthcheck/swagger-ui purposes
+Also an additionl port is exposed for debug/healthcheck/swagger-ui purposes
 
 1. Metrics: http://localhost:6060/metrics
 2. Heaaltcheck: http://localhost:6060/healthz
